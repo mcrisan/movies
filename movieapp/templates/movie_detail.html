@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block styling %}
+{{ block.super }}
+     <link rel="stylesheet" href="{% static 'css/movie_details.css' %}">  
+{% endblock styling %}
+{% block content %}
+<div class="row">
+ <h3>{{movie.title}}</h3>
+ <div class="col-md-12 video">
+	 <iframe width="720" height="435"
+		src="http://www.youtube.com/embed/{{movie.video_set.first.key}}">
+	</iframe>
+ </div>
+ <div class="col-md-4 thumbnail">
+ 	<img src="{{base_url}}{{size}}{{movie.poster_path}}" />
+ </div>
+ <div class="col-md-8">
+	  <div class="title">{{movie.title}}</div>
+	  <div class="original_title">Original Title: {{movie.original_title }}</div>
+	 <div class="realease_date">Released on: {{movie.release_date}}</div>
+	 <div class="rating row">
+	  <div class="col-md-3">Rating: {{movie.vote_average}}</div>
+	  <div class="col-md-3">Votes: {{movie.vote_count}}</div>
+	  <div class="col-md-5">Popularity: {{movie.popularity|floatformat:-2}}</div>
+	 </div>
+	 <div class="stats row">
+	  <div class="col-md-3">Runtime: {{movie.runtime}}</div>
+	  <div class="col-md-3">Budget: {{movie.budget}}</div>
+	  <div class="col-md-5">Revenue: {{movie.revenue}}</div>
+	 </div>
+	 <div class="categories">Categories: 
+	 {% for cat in movie.categories.all %}
+	 	<a href="{% url 'movieapp:categories' category_id=cat.tmdb_id %}">{{cat.name}}</a> |
+	 {% endfor %}
+	 </div>
+	 <div class="tags">Tags: 
+	 {% for tag in movie.keywords.all %}
+	 	{{tag.name}} |
+	 {% endfor %}
+	 </div>
+	 <div class="overview">Overview: {{movie.overview}}</div>
+	 <div class="tagline">Tagline: {{movie.tagline}}</div>
+ </div>
+</div>
+<div class="photos row">
+	<div class="photos_title">Photos:</div>
+ 	{% for photo in movie.image_set.all %}
+ 	<div class="thumbnail"><a href="{{base_url}}{{size1}}{{photo.file_path}}"><img src="{{base_url}}{{size}}{{photo.file_path}}"/></a></div>
+ 	{% empty %}
+ 	No photos
+ 	{% endfor %}
+ </div>
+
+{% endblock content %}

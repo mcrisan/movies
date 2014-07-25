@@ -1,0 +1,25 @@
+.col-md-4:nth-child(3n+1){
+    clear: left;
+}
+
+.details{
+	background-color: #FFFFCC;
+	margin-top: -25px;
+	padding: 5px;
+	margin-bottom: 25px;
+}
+
+.details > .title{
+	font-weight: bold;
+}
+
+.genres{
+	font-size: 12px;
+}
+
+.categories > .cat_title{
+	color: white;
+	background-color: #191b1f;
+	font-weight: bold;
+	font-size: 25px;
+}

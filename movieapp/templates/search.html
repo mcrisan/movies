@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Movies from search term: {{query}}</h3>
+<div class="row">
+	{% for movie in movies %}
+		{% include "partials/home_movie.html" with movie=movie %}	
+	{% endfor %}
+</div>
+{% endblock %}

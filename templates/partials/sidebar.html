@@ -1,0 +1,8 @@
+<div class="row">
+<div class="categories">
+	<div class="cat_title">Categories</div>
+	{% for category in categories %}
+	<div class="col-md-12"><a href="{% url 'movieapp:categories' category_id=category.tmdb_id %}">{{ category.name }}({{category.movie_set.all|length}})</a></div>
+	{% endfor %}
+</div>	
+</div>

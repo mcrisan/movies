@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Movies from Category: {{category.name}}</h3>
+<div class="row">
+	{% for movie in movies %}
+		{% include "partials/home_movie.html" with movie=movie %}	
+	{% endfor %}
+</div>
+<div class="row">
+	<ul class="pager">
+	  {% if movies.has_previous %}
+	    <li class="previous"><a href="{% url 'movieapp:categories_page' category_id=category.tmdb_id page=page_nr|add:"-1"%}">Previous</a></li>	
+	  {% endif %} 
+	  {% if movies.has_next %}	
+	    <li class="next"><a href="{% url 'movieapp:categories_page' category_id=category.tmdb_id page=page_nr|add:"1"%}">Next</a></li>	
+	  {% endif %}	
+	</ul>
+</div>
+{% endblock content %}

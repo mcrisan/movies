@@ -1,0 +1,7 @@
+django==1.6.5
+psycopg2==2.5.3
+South==0.8.4
+six==1.7.2
+tmdbsimple==0.9.1
+django-celery-with-redis==3.0
+django-debug-toolbar==1.2.1

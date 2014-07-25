@@ -1,0 +1,22 @@
+.title{
+	font-weight: bold;
+	color: red;
+	font-size: 25px;
+}
+.photos > .thumbnail{
+	float: left;
+}
+
+.photos > .photos_title{
+	font-weight: bold;
+	color: red;
+	font-size: 25px;
+}
+
+.video{
+	margin-left: 45px;
+}
+
+iframe{
+	border: 10px solid #191b1f;
+}

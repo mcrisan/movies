@@ -1,0 +1,18 @@
+<div class="col-md-4">
+		<div class="thumbnail">
+			<a href="{% url 'movieapp:movie_details' movie_id=movie.id %}"><img src="{{base_url}}{{size}}{{movie.backdrop_path}}"/></a>
+		</div>
+		<div class="details clearfix">
+			<div class="title">
+				<a href="{% url 'movieapp:movie_details' movie_id=movie.id %}">{{movie.title}}</a>
+			</div>
+			<div class="released">Release Date: {{movie.release_date|date:"M d, Y"}}</div>
+			<div class="genres">Genre: 
+				{% for genre in movie.categories.all %}
+					{{genre.name}} |
+				{% endfor %}
+			</div>
+			<div class="rating pull-left">Rating: {{movie.vote_average}}</div>
+			<div class="votes pull-right">Votes: {{movie.vote_count}}</div>
+		</div>
+</div>
